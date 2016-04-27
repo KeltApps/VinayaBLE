@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">VinayaBLE</string>
+
+    <!--Fragments name -->
+    <string name="fragment.ble">BLEFragment</string>
+
+    <!--BLE Fragment -->
+    <string name="bleFragment.dbm">%1$s dbm</string>
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Alpha text on light background -->
+    <item name="alpha.lightBackground.text.primary" format="float" type="dimen">0.87</item>
+    <item name="alpha.lightBackground.text.secondary" format="float" type="dimen">0.54</item>
+    <item name="alpha.lightBackground.text.disabled" format="float" type="dimen">0.38 </item>
+</resources>
