@@ -4,13 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    android:fitsSystemWindows="true">
+    >
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/fragment_ble_recyclerView"
+        android:id="@+id/fragment_scan_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fragment_scan_floating_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/FloatingButton.margin"
+        android:src="@drawable/ic_autorenew_white_48dp"
+        app:layout_anchor="@id/fragment_scan_recyclerView"
+        app:layout_anchorGravity="bottom|right|end" />
 
 </android.support.design.widget.CoordinatorLayout>

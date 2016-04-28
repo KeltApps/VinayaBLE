@@ -1,7 +1,5 @@
 package com.vinaya.vinayable.managers;
 
-import android.util.Log;
-
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -9,8 +7,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-
+/**
+ * Common operations to both bluetooth managers
+ */
 public class MyBluetoothManagerCommon {
+
+    /**
+     * Parse scan record
+     * @param scanRecord result of scan
+     * @return list of UUID service found
+     */
     public static List<UUID> parseAdvertisementPacket(final byte[] scanRecord) {
         List<UUID> uuids = new ArrayList<>();
         byte[] advertisedData = Arrays.copyOf(scanRecord, scanRecord.length);
@@ -59,16 +65,18 @@ public class MyBluetoothManagerCommon {
                     break;
             }
         }
-        for (UUID uuid:uuids
-                ) {
-            Log.d("prueba", "parseAdvertisementPacket: " + uuid);
-        }
         return uuids;
     }
 
-    public static boolean checkOfferSerivce(String uuidService, List<UUID> listUuids){
-        for (UUID uuid: listUuids) {
-            if(uuidService.equals(uuid.toString()))
+    /**
+     * Check if uuidService is in listUuids
+     * @param uuidService
+     * @param listUuids
+     * @return true if it was found
+     */
+    public static boolean checkOfferSerivce(String uuidService, List<UUID> listUuids) {
+        for (UUID uuid : listUuids) {
+            if (uuidService.equals(uuid.toString()))
                 return true;
         }
         return false;

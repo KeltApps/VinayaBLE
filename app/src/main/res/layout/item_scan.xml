@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/item_ble_container"
+    android:id="@+id/item_scan_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
-        android:id="@+id/item_ble_address"
+        android:id="@+id/item_scan_address"
         style="@style/Text_Black_Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin" />
 
     <TextView
-        android:id="@+id/item_ble_rssi"
+        android:id="@+id/item_scan_rssi"
         style="@style/Text_Black_Body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

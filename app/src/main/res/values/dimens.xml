@@ -6,4 +6,6 @@
     <dimen name="size.text.title">20sp</dimen>
     <dimen name="size.text.subheading">16sp</dimen>
     <dimen name="size.text.body">14sp</dimen>
+    <!--Floating button -->
+    <dimen name="FloatingButton.margin">16dp</dimen>
 </resources>

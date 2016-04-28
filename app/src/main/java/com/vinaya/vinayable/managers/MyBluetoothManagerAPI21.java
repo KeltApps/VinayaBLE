@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.UUID;
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+/**
+ * Bluetooth manager when the current device use higher or equal than Lollipop
+ */
 public class MyBluetoothManagerAPI21 {
     private BluetoothAdapter mBluetoothAdapter;
     private BluetoothLeScanner mLEScanner;
@@ -46,6 +49,9 @@ public class MyBluetoothManagerAPI21 {
         filters = new ArrayList<>();
     }
 
+    /**
+     * Scan callback.
+     */
     private ScanCallback mScanCallback = new ScanCallback() {
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
@@ -58,14 +64,21 @@ public class MyBluetoothManagerAPI21 {
                 addDevice(result);
         }
 
+        /**
+         * Add a new device
+         * @param result result of scan
+         */
         private void addDevice(ScanResult result) {
             BluetoothDevice bluetoothDevice = result.getDevice();
+            if(result.getScanRecord() == null)
+                return;
             byte[] scanRecord = result.getScanRecord().getBytes();
             if (scanRecord == null)
                 return;
             List<UUID> listUuids = MyBluetoothManagerCommon.parseAdvertisementPacket(scanRecord);
             boolean offerService = MyBluetoothManagerCommon.checkOfferSerivce(uuidService, listUuids);
-            MyBluetoothDevice myBluetoothDevice = new MyBluetoothDevice(bluetoothDevice.getAddress(), result.getRssi(), offerService);
+            //Notify new device founded
+            MyBluetoothDevice myBluetoothDevice = new MyBluetoothDevice(bluetoothDevice, bluetoothDevice.getAddress(), result.getRssi(), offerService);
             onMyBluetoothCallback.onNewDeviceListenerAPI21(myBluetoothDevice);
         }
 
@@ -75,7 +88,10 @@ public class MyBluetoothManagerAPI21 {
         }
     };
 
-
+    /**
+     * Start or stop the scan devices
+     * @param enable start if is true, stop if is false
+     */
     public void scanLEDevice(final boolean enable) {
         if (enable) {
             mHandler.postDelayed(new Runnable() {
@@ -90,9 +106,16 @@ public class MyBluetoothManagerAPI21 {
         }
     }
 
+
+    public static long getScanPeriod() {
+        return SCAN_PERIOD;
+    }
+
+    /**
+     * Interface to send the new devices found
+     */
     public interface OnMyBluetoothManagerAPI21 {
         void onNewDeviceListenerAPI21(MyBluetoothDevice myBluetoothDevice);
     }
-
 
 }

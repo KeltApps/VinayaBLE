@@ -12,6 +12,9 @@ import com.vinaya.vinayable.Models.MyBluetoothDevice;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Bluetooth manager when the current device use lower than Lollipop
+ */
 public class MyBluetoothManager {
 
     private BluetoothAdapter mBluetoothAdapter;
@@ -32,7 +35,9 @@ public class MyBluetoothManager {
     }
 
 
-    // Device scan callback.
+    /**
+     * Scan callback.
+     */
     private BluetoothAdapter.LeScanCallback mLeScanCallback =
             new BluetoothAdapter.LeScanCallback() {
                 @Override
@@ -40,11 +45,15 @@ public class MyBluetoothManager {
                                      byte[] scanRecord) {
                     List<UUID> listUuids = MyBluetoothManagerCommon.parseAdvertisementPacket(scanRecord);
                     boolean offerService = MyBluetoothManagerCommon.checkOfferSerivce(uuidService,listUuids);
-                    MyBluetoothDevice myBluetoothDevice = new MyBluetoothDevice(device.getAddress(), rssi, offerService);
+                    MyBluetoothDevice myBluetoothDevice = new MyBluetoothDevice(device,device.getAddress(), rssi, offerService);
                     onMyBluetoothCallback.onNewDeviceListener(myBluetoothDevice);
                 }
             };
 
+    /**
+     * Start or stop the scan devices
+     * @param enable start if is true, stop if is false
+     */
     public void scanLeDevice(final boolean enable) {
         if (enable) {
             // Stops scanning after a pre-defined scan period.
@@ -69,6 +78,13 @@ public class MyBluetoothManager {
         return mScanning;
     }
 
+    public static long getScanPeriod() {
+        return SCAN_PERIOD;
+    }
+
+    /**
+     * Interface to send the new devices found
+     */
     public interface OnMyBluetoothManager {
         void onNewDeviceListener(MyBluetoothDevice myBluetoothDevice);
     }

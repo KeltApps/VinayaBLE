@@ -1,15 +1,27 @@
 package com.vinaya.vinayable.Models;
 
 
+import android.bluetooth.BluetoothDevice;
+
 public class MyBluetoothDevice {
+    private BluetoothDevice device;
     private String address;
     private int rssi;
     private boolean offerService;
 
-    public MyBluetoothDevice(String address, int rssi, boolean offerService) {
+    public MyBluetoothDevice(BluetoothDevice device, String address, int rssi, boolean offerService) {
+        this.device = device;
         this.address = address;
         this.rssi = rssi;
         this.offerService = offerService;
+    }
+
+    public BluetoothDevice getDevice() {
+        return device;
+    }
+
+    public void setDevice(BluetoothDevice device) {
+        this.device = device;
     }
 
     public String getAddress() {

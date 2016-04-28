@@ -2,8 +2,20 @@
     <string name="app_name">VinayaBLE</string>
 
     <!--Fragments name -->
-    <string name="fragment.ble">BLEFragment</string>
+    <string name="fragment.scan">ScanFragment</string>
+    <string name="fragment.loading">LoadingFragment</string>
+    <string name="fragment.device">DeviceFragment</string>
 
-    <!--BLE Fragment -->
-    <string name="bleFragment.dbm">%1$s dbm</string>
+    <!--Scan Fragment -->
+    <string name="scanFragment.dbm">%1$s dbm</string>
+
+    <!--Device Fragment -->
+    <string name="deviceFragment.buttonSend">Send</string>
+    <string name="deviceFragment.rxTitle">Latest string received</string>
+    <string name="deviceFragment.txTitle">Latest string sent</string>
+
+    <!--Toast -->
+    <string name="toast.disconnected">The peripheral %1$s was disconnected</string>
+    <string name="toast.rssiWeak">RSSI is weak</string>
+
 </resources>
